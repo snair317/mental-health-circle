@@ -27,7 +27,7 @@ export default function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/how-it-works" element={<HowitWorks />} />
           <Route path="/tips" element={<Tips />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/resources" element={<Resources />} />
