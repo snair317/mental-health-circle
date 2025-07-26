@@ -18,7 +18,7 @@ export default function App() {
             <span className="logo-circle">🫶</span> Solace Circle
           </Link>
           <div>
-            <Link to="/how-it-works">How It Works</Link>
+            <Link to="/how-it-works">How it Works</Link>
             <Link to="/tips">Tips</Link>
             <Link to="/faq">FAQ</Link>
             <Link to="/resources">Resources</Link>
