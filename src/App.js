@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
@@ -38,8 +37,7 @@ export default function App() {
 
       <footer className="footer">
         <span>
-          Solace Circle © {new Date().getFullYear()} • A safe space to share and be
-          heard.
+          Solace Circle © {new Date().getFullYear()} • A safe space to share and be heard.
         </span>
       </footer>
     </div>
