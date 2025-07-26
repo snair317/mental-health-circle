@@ -1,5 +1,5 @@
 import React from "react";
-export default function HowItWorks() {
+export default function HowitWorks() {
   return (
     <div className="page simple">
       <h2>How It Works</h2>
