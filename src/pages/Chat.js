@@ -1,74 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+
+const comfortBot = {
+  name: "Comfort Bot",
+  avatar: "🤖",
+  initial:
+    "Hi, I’m here to help you feel safe and heard. Type anything, or try '/help' for ideas. Remember, you are not alone 💙"
+};
+
+function randomId() { return Math.random().toString(36).slice(2,9); }
 
 export default function Chat() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const username = location.state?.name || "Guest";
-  const opt = location.state?.opt;
-
   const [messages, setMessages] = useState([
-    {
-      from: "listener",
-      text: `Hi ${username}, I'm here to ${
-        opt === "listen" ? "listen" : "hear you"
-      }. What's on your mind?`
-    }
+    { id: randomId(), sender: "bot", text: comfortBot.initial, time: new Date() }
   ]);
   const [input, setInput] = useState("");
+  const [isBotTyping, setBotTyping] = useState(false);
+  const chatEndRef = useRef();
 
   useEffect(() => {
-    if (!location.state) navigate("/");
-  }, [location, navigate]);
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-  const sendMessage = () => {
-    const msg = input.trim();
-    if (!msg) return;
-    setMessages((m) => [...m, { from: "you", text: msg }]);
+  function sendMessage(text, sender="me") {
+    setMessages(msgs => [
+      ...msgs,
+      { id: randomId(), sender, text, time: new Date() }
+    ]);
+  }
+
+  function handleSend() {
+    if (!input.trim()) return;
+    sendMessage(input.trim(), "me");
+    if (input.trim() === "/help") {
+      setTimeout(() => sendMessage("Try sharing how you feel, or say what you need. You can also just listen, or send a kind emoji: 🌸"), 500);
+    } else if (/sad|alone|anxious|depress|help/i.test(input)) {
+      setTimeout(() => sendMessage("Thank you for sharing. Remember, feelings are valid. Would you like a calming tip? 🌱"), 700);
+    }
     setInput("");
-    setTimeout(() => {
-      const replies = [
-        "I'm here for you.",
-        "Tell me more about that.",
-        "How does that make you feel?",
-        "That sounds tough.",
-        "I understand."
-      ];
-      const r = replies[Math.floor(Math.random() * replies.length)];
-      setMessages((m) => [...m, { from: "listener", text: r }]);
-    }, 1200);
-  };
+  }
 
   return (
-    <div className="page chat-page">
-      <div className="chatbox">
-        <div className="chat-header">
-          <h2>
-            {opt === "listen" ? "Listening Mode" : "Share Mode"}: {username}
-          </h2>
-        </div>
-        <div className="chat-messages">
-          {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`msg ${msg.from === "you" ? "you" : "listener"}`}
-            >
-              <span>
-                {msg.from === "you" ? username : "Listener"}:
-              </span>{" "}
-              {msg.text}
-            </div>
-          ))}
-        </div>
-        <div className="chat-input-row">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => (e.key === "Enter" ? sendMessage() : null)}
-            placeholder="Type a message..."
-          />
-          <button onClick={sendMessage}>Send</button>
-        </div>
+    <div className="chat-premium-main">
+      <div className="chat-premium-header">
+        <span className="chat-bot-avatar">{comfortBot.avatar}</span>
+        <span>
+          You’re in the Circle. <b>Speak</b> or <b>Listen</b>
+        </span>
+      </div>
+      <div className="chat-premium-messages">
+        {messages.map(msg => (
+          <div key={msg.id}
+            className={msg.sender === "me" ? "chat-msg-me" : "chat-msg-bot"}
+          >
+            {msg.sender === "bot" && (
+              <span className="chat-bot-avatar">{comfortBot.avatar}</span>
+            )}
+            <span>{msg.text}</span>
+          </div>
+        ))}
+        <div ref={chatEndRef} />
+      </div>
+      <div className="chat-premium-input-row">
+        <input
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          placeholder="Type your message... (or /help)"
+          onKeyDown={e => e.key === "Enter" && handleSend()}
+        />
+        <button className="chat-send-btn" onClick={handleSend}>
+          Send
+        </button>
+      </div>
+      <div className="chat-support-bar">
+        <span>💙 You are not alone. Support is here, always.</span>
       </div>
     </div>
   );
