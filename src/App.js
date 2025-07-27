@@ -4,16 +4,16 @@ import {
   Route,
   Link,
   NavLink,
-  useNavigate
+  useNavigate,
+  useLocation,
 } from "react-router-dom";
 import {
   Menu,
   X,
-  MessageCircle,
   Home as HomeIcon,
   BookOpen,
   HelpCircle,
-  UserPlus
+  UserPlus,
 } from "lucide-react";
 
 import HomePage from "./pages/Home";
@@ -29,6 +29,7 @@ import "./App.css";
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
     { to: "/", label: "Home", icon: <HomeIcon size={18} /> },
@@ -36,8 +37,13 @@ export default function App() {
     { to: "/tips", label: "Tips", icon: <HelpCircle size={18} /> },
     { to: "/faq", label: "FAQ", icon: <HelpCircle size={18} /> },
     { to: "/resources", label: "Resources", icon: <BookOpen size={18} /> },
-    { to: "/volunteer", label: "Volunteer", icon: <UserPlus size={18} /> }
+    { to: "/volunteer", label: "Volunteer", icon: <UserPlus size={18} /> },
   ];
+
+  // Optional: Close nav on route change (for mobile UX)
+  React.useEffect(() => {
+    setNavOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className="main-wrapper">
@@ -49,40 +55,25 @@ export default function App() {
 
         <button
           className="nav-mobile-btn"
-          onClick={() => setNavOpen(o => !o)}
+          onClick={() => setNavOpen((o) => !o)}
           aria-label="Toggle menu"
         >
           {navOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         <div className={`nav-links ${navOpen ? "show" : ""}`}>
-          {navLinks.map(l => (
+          {navLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               end={l.to === "/"}
               onClick={() => setNavOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "nav-active" : undefined
-              }
+              className={({ isActive }) => (isActive ? "nav-active" : undefined)}
             >
               <span className="nav-icon">{l.icon}</span>
               {l.label}
             </NavLink>
           ))}
-
-          <button
-            className="nav-chat-btn"
-            onClick={() => {
-              setNavOpen(false);
-              navigate("/chat", { state: { opt: "beheard" } });
-            }}
-          >
-            <span className="nav-icon">
-              <MessageCircle size={18} />
-            </span>
-            Get Heard
-          </button>
         </div>
       </nav>
 
