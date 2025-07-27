@@ -443,3 +443,35 @@ a {
   font-size: 1.04rem;
   font-weight: 500;
 }
+
+/* Page layout */
+.page-content {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 0 1.2rem;
+}
+.page-content h2 {
+  font-size: 2rem;
+  color: #21436a;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+/* Card grid */
+.premium-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+/* Individual card */
+.premium-card {
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 14px #a1caf22e;
+  padding: 1.8rem 1.3rem;
+  font-size: 1.05rem;
+  color: #355475;
+  line-height: 1.5;
+}
+
