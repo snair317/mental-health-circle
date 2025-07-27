@@ -19,9 +19,10 @@ export default function Home() {
             Welcome to <span className="highlight">Solace Circle</span>
           </h1>
           <p>
-            ✨ A modern mental health support space built for comfort, privacy,
-            and community.
+            ✨ A modern mental health support space built for comfort,
+            privacy, and community.
           </p>
+
           <div className="hero__cta-buttons">
             <button
               className="btn-primary"
@@ -30,7 +31,7 @@ export default function Home() {
               Be Heard
             </button>
             <button
-              className="btn-secondary"
+              className="btn-outline"
               onClick={() => handleOption("listen")}
             >
               Listen
@@ -44,7 +45,7 @@ export default function Home() {
         />
       </section>
 
-      {/* Feature cards */}
+      {/* Features */}
       <section className="features">
         <div className="feature-card">
           <div className="feature-icon">🫶</div>
@@ -59,9 +60,7 @@ export default function Home() {
         <div className="feature-card">
           <div className="feature-icon">🛡️</div>
           <h3>Safe Environment</h3>
-          <p>
-            Community rules & moderation keep you safe and supported.
-          </p>
+          <p>Community rules & moderation keep you safe and respected.</p>
         </div>
       </section>
 
@@ -70,18 +69,18 @@ export default function Home() {
         <h2>Why Solace Circle?</h2>
         <ul>
           <li>
-            ✅ <b>Private</b>: No sign-up required.
+            ✅ <b>Private</b>: No sign-up required—your data stays safe.
           </li>
           <li>
-            ✅ <b>Accessible</b>: Light, mobile-first, and fast.
+            ✅ <b>Accessible</b>: Mobile-first, light, and fast loading.
           </li>
           <li>
-            ✅ <b>Resourceful</b>: Tips, articles, and 24/7 help lines.
+            ✅ <b>Resourceful</b>: Tips, guides, and immediate help lines.
           </li>
         </ul>
       </section>
 
-      {/* Footer CTA */}
+      {/* CTA Footer */}
       <footer className="footer-cta">
         <h3>Ready to join your circle?</h3>
         <button
