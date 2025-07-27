@@ -27,7 +27,6 @@ const steps = [
 ];
 
 export default function HowitWorks() {
-  // rotating affirmation
   const [aIdx, setAIdx] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setAIdx(i => (i + 1) % affirmations.length), 12000);
