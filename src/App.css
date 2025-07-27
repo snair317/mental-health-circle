@@ -536,3 +536,81 @@ a {
   color: #1976d2;
   font-size: 1.4rem;
 }
+.affirmation-bar {
+  background: #e6f4fa;
+  color: #2873b9;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 16px #bee3ef29;
+  transition: background 0.3s;
+}
+
+.premium-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.premium-card {
+  background: linear-gradient(120deg, #fff 70%, #eaf6fc 100%);
+  border-radius: 2rem;
+  box-shadow: 0 6px 24px #bed3ef21;
+  padding: 2.5rem 2rem 1.8rem;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.16s;
+  animation: pop-in 0.8s cubic-bezier(.23,.86,.58,1.1) both;
+}
+.premium-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px #bed3ef29;
+}
+
+.card-icon {
+  background: #e6f4fa;
+  border-radius: 50%;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  color: #2873b9;
+  box-shadow: 0 2px 12px #bee3ef19;
+}
+
+.premium-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.premium-card p {
+  font-size: 1.07rem;
+  color: #365075;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+@media (max-width: 800px) {
+  .premium-card-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .premium-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(.93) translateY(18px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
