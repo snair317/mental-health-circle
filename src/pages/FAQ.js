@@ -1,15 +1,33 @@
 import React from "react";
+import "../App.css";
+
+const faqs = [
+  {
+    q: "Is Solace Circle really private?",
+    a: "Yes—nothing you share is stored or tied to your identity."
+  },
+  {
+    q: "Do I need to sign up?",
+    a: "No sign‑up required. You can join as 'Friend' anonymously or share your name."
+  },
+  {
+    q: "Can I switch between speaking and listening?",
+    a: "Absolutely. Just come back and click the appropriate button anytime."
+  }
+];
+
 export default function FAQ() {
   return (
-    <div className="page simple">
+    <div className="page-content">
       <h2>Frequently Asked Questions</h2>
-      <ul>
-        <li><b>Is it really anonymous?</b> Yes. You can join as "Guest" and no personal info is required.</li>
-        <li><b>Is this professional therapy?</b> No. We offer peer support and listening, not medical advice.</li>
-        <li><b>How much does it cost?</b> It's completely free.</li>
-        <li><b>How do I volunteer?</b> Go to the Volunteer page and get started!</li>
-        <li><b>What if I’m in crisis?</b> See the Resources page for immediate help lines.</li>
-      </ul>
+      <div className="premium-card-list">
+        {faqs.map((f, i) => (
+          <div key={i} className="premium-card">
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
