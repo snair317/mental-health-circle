@@ -10,7 +10,7 @@ import {
   Menu,
   X,
   MessageCircle,
-  Home,
+  Home as HomeIcon,
   BookOpen,
   HelpCircle,
   UserPlus
@@ -31,7 +31,7 @@ export default function App() {
   const navigate = useNavigate();
 
   const navLinks = [
-    { to: "/", label: "Home", icon: <Home size={18} /> },
+    { to: "/", label: "Home", icon: <HomeIcon size={18} /> },
     { to: "/how-it-works", label: "How it Works", icon: <BookOpen size={18} /> },
     { to: "/tips", label: "Tips", icon: <HelpCircle size={18} /> },
     { to: "/faq", label: "FAQ", icon: <HelpCircle size={18} /> },
@@ -41,43 +41,40 @@ export default function App() {
 
   return (
     <div className="main-wrapper">
-      {/* Premium Glassy NavBar */}
       <nav className="nav-glass">
         <Link to="/" className="nav-logo">
-          <span className="logo-circle"></span>
+          <span className="logo-circle" />
           Solace Circle
         </Link>
 
-        {/* Mobile menu button */}
         <button
           className="nav-mobile-btn"
+          onClick={() => setNavOpen(o => !o)}
           aria-label="Toggle menu"
-          onClick={() => setNavOpen((o) => !o)}
         >
-          {navOpen ? <X /> : <Menu />}
+          {navOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Links */}
         <div className={`nav-links ${navOpen ? "show" : ""}`}>
-          {navLinks.map((l) => (
+          {navLinks.map(l => (
             <NavLink
               key={l.to}
               to={l.to}
-              onClick={() => setNavOpen(false)}
-              className={({ isActive }) => (isActive ? "nav-active" : "")}
               end={l.to === "/"}
+              onClick={() => setNavOpen(false)}
+              className={({ isActive }) =>
+                isActive ? "nav-active" : undefined
+              }
             >
               <span className="nav-icon">{l.icon}</span>
               {l.label}
             </NavLink>
           ))}
 
-          {/* Chat CTA built into nav */}
           <button
             className="nav-chat-btn"
             onClick={() => {
               setNavOpen(false);
-              // original behavior: no name, default "beheard"
               navigate("/chat", { state: { opt: "beheard" } });
             }}
           >
@@ -89,7 +86,6 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Your routes */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/how-it-works" element={<HowitWorks />} />
@@ -102,8 +98,7 @@ export default function App() {
 
       <footer className="footer">
         <span>
-          Solace Circle © {new Date().getFullYear()} • A safe space to share and
-          be heard.
+          Solace Circle © {new Date().getFullYear()} • A safe space to share and be heard.
         </span>
       </footer>
     </div>
