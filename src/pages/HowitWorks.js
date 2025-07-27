@@ -26,7 +26,7 @@ const steps = [
   },
 ];
 
-export default function HowItWorks() {
+export default function HowitWorks() {
   // rotating affirmation
   const [aIdx, setAIdx] = useState(0);
   useEffect(() => {
