@@ -353,3 +353,93 @@ a {
   background: none;
   box-shadow: none;
 }
+.chat-premium-main {
+  max-width: 540px;
+  margin: 3rem auto 2.5rem auto;
+  background: linear-gradient(130deg, #e3f3ff 70%, #fff 100%);
+  border-radius: 2rem;
+  box-shadow: 0 2px 24px #bbdff738;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+.chat-premium-header {
+  background: #e3f3ff;
+  border-radius: 2rem 2rem 0 0;
+  font-weight: 600;
+  font-size: 1.09rem;
+  color: #22446d;
+  padding: 1.3rem 1.5rem 0.6rem 1.5rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  border-bottom: 1px solid #d7e5f5;
+}
+.chat-bot-avatar {
+  font-size: 1.65rem;
+  margin-right: 0.3rem;
+}
+.chat-premium-messages {
+  flex: 1;
+  padding: 1.2rem 1.5rem 0.7rem 1.5rem;
+  overflow-y: auto;
+}
+.chat-msg-bot {
+  background: #f1f8ff;
+  color: #125194;
+  margin-bottom: 1.1rem;
+  border-radius: 1.2rem 1.2rem 1.2rem 0.4rem;
+  padding: 0.85rem 1.2rem;
+  max-width: 76%;
+  font-size: 1.07rem;
+  box-shadow: 0 2px 8px #b8cce955;
+  align-self: flex-start;
+  display: flex; gap: 0.7rem;
+}
+.chat-msg-me {
+  background: #d0f6ec;
+  color: #1c4e38;
+  align-self: flex-end;
+  border-radius: 1.2rem 1.2rem 0.4rem 1.2rem;
+  margin-bottom: 1.1rem;
+  padding: 0.85rem 1.2rem;
+  max-width: 76%;
+  font-size: 1.07rem;
+  box-shadow: 0 2px 8px #9fd9be45;
+}
+.chat-premium-input-row {
+  display: flex;
+  border-top: 1px solid #e3eff7;
+  padding: 1.1rem 1.2rem;
+  background: #f8fafb;
+  border-radius: 0 0 2rem 2rem;
+  gap: 0.9rem;
+}
+.chat-premium-input-row input {
+  flex: 1;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid #c7e2f9;
+  border-radius: 1.1rem;
+  font-size: 1.07rem;
+  outline: none;
+}
+.chat-send-btn {
+  background: linear-gradient(90deg, #32b4e9 0%, #53e2c7 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.01rem;
+  border: none;
+  border-radius: 1.1rem;
+  padding: 0.85rem 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #8de1e940;
+  transition: background 0.18s;
+}
+.chat-send-btn:hover {
+  background: #1b89c7;
+}
+.chat-support-bar {
+  text-align: center;
+  padding: 0.8rem 0 1rem 0;
+  color: #3686c9;
+  font-size: 1.04rem;
+  font-weight: 500;
+}
