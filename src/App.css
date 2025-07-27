@@ -475,3 +475,64 @@ a {
   line-height: 1.5;
 }
 
+/* Premium Card Animations & Styles */
+.premium-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 1.8rem;
+  margin: 1.5rem auto;
+  max-width: 960px;
+  padding: 0 1rem;
+}
+
+.premium-card {
+  background: #ffffff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px #b8dff21a;
+  padding: 1.8rem 1.4rem;
+  color: #2d3e4e;
+  line-height: 1.5;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.5s forwards;
+  animation-delay: calc(0.1s * var(--card-index));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 28px #a1caf233;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.premium-card h3 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+  color: #21436a;
+  font-size: 1.18rem;
+}
+
+.premium-card p {
+  margin: 0;
+}
+
+.card-icon {
+  background: #e3f3ff;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1976d2;
+  font-size: 1.4rem;
+}
