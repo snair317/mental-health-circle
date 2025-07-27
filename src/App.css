@@ -1,4 +1,3 @@
-/* ==== Corporate Web App Font & Base ==== */
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   background: #f6f8fc;
@@ -7,7 +6,7 @@ body {
   min-height: 100vh;
 }
 
-/* ==== NAVBAR ==== */
+/* NAVBAR */
 .nav-glass {
   position: sticky;
   top: 0;
@@ -88,7 +87,6 @@ body {
   display: flex;
   align-items: center;
 }
-
 @media (max-width: 900px) {
   .nav-mobile-btn { display: block; }
   .nav-links {
@@ -112,7 +110,7 @@ body {
   }
 }
 
-/* ==== HOME HERO SECTION ==== */
+/* HOME HERO SECTION */
 .home-main {
   width: 100%;
   min-height: 100vh;
@@ -122,12 +120,10 @@ body {
   align-items: center;
   animation: fadeIn 0.8s;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px);}
   to { opacity: 1; transform: none;}
 }
-
 .hero-pro {
   position: relative;
   width: 98vw;
@@ -233,7 +229,6 @@ body {
   background: radial-gradient(circle at 30% 40%, #72c8ff15 45%, #fff0 80%);
   z-index: 1;
 }
-
 @media (max-width: 1000px) {
   .hero-pro {
     flex-direction: column;
@@ -252,7 +247,6 @@ body {
   }
   .hero-pro__img-wrap img { max-width: 60vw; }
 }
-
 @media (max-width: 700px) {
   .hero-pro {
     min-height: 1px;
@@ -267,7 +261,7 @@ body {
   .hero-pro__img-wrap img { width: 180px; }
 }
 
-/* ==== FEATURES ==== */
+/* FEATURES */
 .features-pro {
   display: flex;
   justify-content: center;
