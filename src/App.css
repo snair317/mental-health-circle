@@ -1,3 +1,7 @@
+.nav-mobile-btn {
+  display: none !important;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(120deg, #f6f8fc 0%, #e8f3fc 100%);
