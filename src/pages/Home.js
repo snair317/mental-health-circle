@@ -1,52 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import hero from "../assets/hero.svg";
+import hero from "../assets/hero.svg"; // Replace with your SVG/PNG path
+
+const affirmations = [
+  "🌱 You are stronger than you think. Every step counts.",
+  "☀️ It's okay not to be okay. You're not alone.",
+  "🌿 Take a breath. You matter here.",
+  "💙 Someone is ready to listen.",
+  "✨ Sharing helps. We're here for you.",
+];
 
 export default function Home() {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [affirm] = useState(
+    affirmations[Math.floor(Math.random() * affirmations.length)]
+  );
 
-  const handleOption = (opt) => {
-    navigate("/chat", { state: { opt } });
-  };
+  function handleOption(opt) {
+    navigate("/chat", { state: { name: name.trim(), opt } });
+  }
 
   return (
     <main className="home-main">
-      <section className="hero-pro">
-        <div className="hero-pro__content">
+      <div className="affirmation-bar">{affirm}</div>
+      <section className="hero-peace">
+        <div className="hero-peace__content">
           <h1>
-            <span>Welcome to</span>
-            <span className="brand">Solace Circle</span>
+            {name.trim()
+              ? `Hi, ${name.trim()}!`
+              : "Hi, friend!"}
           </h1>
-          <p>
-            <span role="img" aria-label="sparkle">✨</span>{" "}
-            A modern mental health support space built for comfort, privacy, and community.
-          </p>
-          <div className="hero-pro__cta">
-            <button
-              className="btn-pro btn-pro--primary"
-              onClick={() => handleOption("beheard")}
-            >
-              Be Heard
+          <div className="subtitle">
+            You are not alone. This is a safe, supportive space to speak or listen—always anonymous, always caring.
+          </div>
+          <div className="hero-peace__cta">
+            <input
+              type="text"
+              placeholder="What's your name? (optional)"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              autoComplete="off"
+              spellCheck={false}
+              maxLength={18}
+            />
+            <button className="btn-calm" onClick={() => handleOption("beheard")}>
+              Speak Out
             </button>
-            <button
-              className="btn-pro btn-pro--outline"
-              onClick={() => handleOption("listen")}
-            >
-              Listen
+            <button className="btn-calm btn-outline-calm" onClick={() => handleOption("listen")}>
+              Just Listen
             </button>
           </div>
         </div>
-        <div className="hero-pro__img-wrap">
+        <div className="hero-peace__img-wrap">
           <img src={hero} alt="Mental health support illustration" />
         </div>
-        <div className="hero-pro__bg"></div>
       </section>
-
-      {/* Features */}
-      <section className="features-pro">
-        <Feature icon="🫶" title="Anonymous & Supportive" desc="Share without judgement—your privacy is respected." />
-        <Feature icon="💬" title="Real Conversations" desc="Talk, listen, and feel heard. No bots, just people." />
-        <Feature icon="🛡️" title="Safe Environment" desc="Community rules & moderation keep you safe and respected." />
+      <section className="features-peace">
+        <Feature
+          icon="🫶"
+          title="Confidential & Safe"
+          desc="Your story is yours. Only share what you want—always private."
+        />
+        <Feature
+          icon="💬"
+          title="Real Human Support"
+          desc="Connect with listeners who care. No bots, no judgement."
+        />
+        <Feature
+          icon="🤝"
+          title="Respectful Community"
+          desc="Guided by empathy, everyone is welcome and respected here."
+        />
       </section>
     </main>
   );
@@ -54,8 +79,8 @@ export default function Home() {
 
 function Feature({ icon, title, desc }) {
   return (
-    <div className="feature-pro-card">
-      <div className="feature-pro-icon">{icon}</div>
+    <div className="feature-peace-card">
+      <div className="feature-peace-icon">{icon}</div>
       <div>
         <h3>{title}</h3>
         <p>{desc}</p>
